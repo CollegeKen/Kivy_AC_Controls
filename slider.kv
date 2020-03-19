@@ -1,0 +1,146 @@
+#:kivy 1.0
+
+<Slider2>:
+    padding: 1
+    canvas:
+        Color:
+            rgb: 1, 0, 0.15 #color for above top cursor
+        BorderImage:
+            border: self.border_horizontal if self.orientation == 'horizontal' else self.border_vertical
+            pos: (self.x + self.padding, self.center_y - self.background_width / 2) if self.orientation == 'horizontal' else (self.center_x - self.background_width / 2, self.y + self.padding)
+            size: (self.width - self.padding * 2, self.background_width) if self.orientation == 'horizontal' else (self.background_width, self.height - self.padding * 2)
+            source: (self.background_disabled_horizontal if self.orientation == 'horizontal' else self.background_disabled_vertical) if self.disabled else (self.background_horizontal if self.orientation == 'horizontal' else self.background_vertical)
+        Color: #color for line underneath top cursor
+            rgba: 1, 1, 1, 0.75
+        Line: #line under top cursor
+            width: self.value_track_width
+            points: self.center_x, self.y + self.padding, self.center_x, self.value2_pos[1]
+        Color: #color for line underneath top cursor and above bottom cursor
+            rgb: 0, 0, 0.75
+        Line: #line under top cursor and above top cursor
+            width: self.value_track_width
+            points: self.center_x, self.y + self.padding, self.center_x, self.value1_pos[1]
+        Color:
+            rgb: 1, 1, 1 #color for cursors
+        Rectangle:
+            pos: (self.value1_pos[0] - 16, self.center_y - 16) if self.orientation == 'horizontal' else (self.center_x - 16, self.value1_pos[1] - 16)
+            size: (32, 32)
+            source: 'atlas://data/images/defaulttheme/slider_cursor'
+        Rectangle:
+            pos: (self.value2_pos[0] - 16, self.center_y - 16) if self.orientation == 'horizontal' else (self.center_x - 16, self.value2_pos[1] - 16)
+            size: (32, 32)
+            source: '/home/ken/Pictures/Kivy_AC_Controls_Images/slider_cursor_red.png'
+
+<MainView>:
+
+    slider:slider
+    slider:slider1
+    slider:slider2
+    slider:slider3
+
+    BoxLayout:
+        orientation: 'horizontal'
+        size: root.size
+        cols: 5
+        BoxLayout:
+            orientation: 'vertical'
+            rows: 3
+            Label:
+                text: 'Stage 1'
+            BoxLayout:
+                orientation: 'horizontal'
+                cols: 2
+                Slider2:
+                    id:slider
+                    min: 0
+                    max: 100
+                    value1: 10
+                    value2: 90
+                    height: 215
+                Image:
+                    source: '/home/ken/Pictures/Kivy_AC_Controls_Images/tickLine.png'
+                    size: self.texture_size
+            Label:
+                text: str(int(slider.value1))
+        BoxLayout:
+            orientation: 'vertical'
+            rows: 3
+            Label:
+                text: 'Stage 2'
+            BoxLayout:
+                orientation: 'horizontal'
+                cols: 2
+                Slider2:
+                    id:slider1
+                    min: 0
+                    max: 100
+                    value1: 10
+                    value2: 90
+                    height: 215
+                Image:
+                    source: '/home/ken/Pictures/Kivy_AC_Controls_Images/tickLine.png'
+                    size: self.texture_size
+            Label:
+                text: str(int(slider1.value1))
+        BoxLayout:
+            orientation: 'vertical'
+            rows: 3
+            Label:
+                text: 'Stage 3'
+            BoxLayout:
+                orientation: 'horizontal'
+                cols: 2
+                Slider2:
+                    id:slider2
+                    min: 0
+                    max: 100
+                    value1: 10
+                    value2: 90
+                    height: 215
+                Image:
+                    source: '/home/ken/Pictures/Kivy_AC_Controls_Images/tickLine.png'
+                    size: self.texture_size
+            Label:
+                text: str(int(slider2.value1))
+        BoxLayout:
+            orientation: 'vertical'
+            rows: 3
+            Label:
+                text: 'Stage 4'
+            BoxLayout:
+                orientation: 'horizontal'
+                cols: 2
+                Slider2:
+                    id:slider3
+                    min: 0
+                    max: 100
+                    value1: 10
+                    value2: 90
+                    height: 215
+                Image:
+                    source: '/home/ken/Pictures/Kivy_AC_Controls_Images/tickLine.png'
+                    size: self.texture_size
+            Label:
+                text: str(int(slider3.value1))
+        BoxLayout:
+            orientation: 'vertical'
+            rows: 3
+            Label:
+                text: 'Stage 5'
+            BoxLayout:
+                orientation: 'horizontal'
+                cols: 2
+                Slider2:
+                    id:slider4
+                    min: 0
+                    max: 100
+                    value1: 10
+                    value2: 90
+                    height: 215
+                Image:
+                    source: '/home/ken/Pictures/Kivy_AC_Controls_Images/tickLine.png'
+                    size: self.texture_size
+            Label:
+                text: str(int(slider4.value1))
+
+
